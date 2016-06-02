@@ -2,7 +2,9 @@ TEMPLATE = app
 CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
-LIBS += -lpthread
+LIBS += -lpthread -lncursesw
+QMAKE_CXXFLAGS += -g -O0
+
 
 SOURCES += main.cpp \
     ../Public/Date.cpp \
@@ -33,7 +35,33 @@ SOURCES += main.cpp \
     CMD/Transfer.cpp \
     CMD/UserLogin.cpp \
     CMD/Withdrawal.cpp \
-    TransactionManager.cpp
+    TransactionManager.cpp \
+    JFC/JApplication.cpp \
+    JFC/JButton.cpp \
+    JFC/JEdit.cpp \
+    JFC/JForm.cpp \
+    JFC/JLabel.cpp \
+    JFC/JLinkText.cpp \
+    JFC/JMessageBox.cpp \
+    JFC/JWindow.cpp \
+    JFC/JWindowBase.cpp \
+    UI/BalanceInquiryForm.cpp \
+    UI/ChangePasswordForm.cpp \
+    UI/CloseAccountForm.cpp \
+    UI/DepositForm.cpp \
+    UI/DetailStatementForm.cpp \
+    UI/FormManager.cpp \
+    UI/LoginForm.cpp \
+    UI/MainMenuForm.cpp \
+    UI/OpenAccountForm.cpp \
+    UI/QueryAccountHistoryBillForm.cpp \
+    UI/QueryDayBillForm.cpp \
+    UI/QueryHistoryBillForm.cpp \
+    UI/ReceiptForm.cpp \
+    UI/ReportForm.cpp \
+    UI/TransferForm.cpp \
+    UI/Validator.cpp \
+    UI/WithdrawalForm.cpp
 
 HEADERS += \
     ../Public/Date.h \
@@ -69,5 +97,33 @@ HEADERS += \
     CMD/Transfer.h \
     CMD/UserLogin.h \
     CMD/Withdrawal.h \
-    TransactionManager.h
+    TransactionManager.h \
+    JFC/JApplication.h \
+    JFC/JButton.h \
+    JFC/JEdit.h \
+    JFC/JEvent.h \
+    JFC/JForm.h \
+    JFC/JLabel.h \
+    JFC/JLinkText.h \
+    JFC/JMessageBox.h \
+    JFC/JWindow.h \
+    JFC/JWindowBase.h \
+    ../Public/wincon.h \
+    UI/BalanceInquiryForm.h \
+    UI/ChangePasswordForm.h \
+    UI/CloseAccountForm.h \
+    UI/DepositForm.h \
+    UI/DetailStatementForm.h \
+    UI/FormManager.h \
+    UI/LoginForm.h \
+    UI/MainMenuForm.h \
+    UI/OpenAccountForm.h \
+    UI/QueryAccountHistoryBillForm.h \
+    UI/QueryDayBillForm.h \
+    UI/QueryHistoryBillForm.h \
+    UI/ReceiptForm.h \
+    UI/ReportForm.h \
+    UI/TransferForm.h \
+    UI/Validator.h \
+    UI/WithdrawalForm.h
 

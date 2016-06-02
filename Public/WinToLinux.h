@@ -6,8 +6,8 @@
 
 #define HANDLE              int
 #define MAX_PATH            260
-#define TRUE                true 
-#define FALSE               false
+//#define TRUE                true
+//#define FALSE               false
 #define __stdcall
 #define __declspec(x)  
 #define __cdecl 
