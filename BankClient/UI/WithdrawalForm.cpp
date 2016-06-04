@@ -67,16 +67,6 @@ void WithdrawalForm::Draw()
 	JForm::Draw();
 }
 
-void WithdrawalForm::DrawBorder()
-{
-	SetTextColor(FCOLOR_YELLO);
-	SetBkColor(BCOLOR_RED);
-	DrawHLine(0, 0, Width()-1, '-');
-	DrawHLine(Height()-1, 0, Width()-1, '-');
-	DrawVLine(0, 1, Height()-2, ' ');
-	DrawVLine(Width()-1, 1, Height()-2, ' ');
-}
-
 void WithdrawalForm::OnKeyEvent(JEvent* e)
 {
 	int key = e->GetEventCode();
@@ -108,6 +98,7 @@ void WithdrawalForm::OnKeyEvent(JEvent* e)
 		{
 			Reset();
 			editAccountId_->SetCurrent();
+			ClearWindow();
 			Show();
 			e->Done();
 		}
@@ -172,6 +163,7 @@ void WithdrawalForm::Submit()
 	try
 	{
 		BankSession bs;
+		bs.Connect();
 		bs.SetCmd(CMD_WITHDRAW);
 		bs.SetAttribute("account_id", editAccountId_->GetText());
 		bs.SetAttribute("pass", editPass_->GetText());
@@ -200,7 +192,7 @@ void WithdrawalForm::Submit()
 			form->SetItemText("交易金额", bs.GetAttribute("money"));
 			form->SetItemText("摘    要", "取款");
 			form->SetItemText("余    额", bs.GetResponse("balance"));
-
+			form->ClearWindow();
 			form->Show();
 		}
 		else

@@ -45,16 +45,6 @@ void QueryDayBillForm::Draw()
 	JForm::Draw();
 }
 
-void QueryDayBillForm::DrawBorder()
-{
-	SetTextColor(FCOLOR_YELLO);
-	SetBkColor(BCOLOR_RED);
-	DrawHLine(0, 0, Width()-1, '-');
-	DrawHLine(Height()-1, 0, Width()-1, '-');
-	DrawVLine(0, 1, Height()-2, ' ');
-	DrawVLine(Width()-1, 1, Height()-2, ' ');
-}
-
 void QueryDayBillForm::OnKeyEvent(JEvent* e)
 {
 	int key = e->GetEventCode();
@@ -107,6 +97,7 @@ void QueryDayBillForm::Query()
 	try
 	{
 		BankSession bs;
+		bs.Connect();
 		bs.SetCmd(CMD_DAY_BILL);
 		bs.SetAttribute("date", editDate_->GetText());
 		bs.SetAttribute("page", "0");

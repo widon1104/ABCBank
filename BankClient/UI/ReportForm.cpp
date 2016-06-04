@@ -106,17 +106,6 @@ void ReportForm::Draw()
 	JForm::Draw();
 }
 
-void ReportForm::DrawBorder()
-{
-	SetTextColor(FCOLOR_YELLO);
-	SetBkColor(BCOLOR_RED);
-	DrawHLine(0, 0, Width()-1, '-');
-	DrawHLine(Height()-1, 0, Width()-1, '-');
-	DrawVLine(0, 1, Height()-2, ' ');
-	DrawVLine(Width()-1, 1, Height()-2, ' ');
-}
-
-
 void ReportForm::OnKeyEvent(JEvent* e)
 {
 	int key = e->GetEventCode();
@@ -176,6 +165,7 @@ void ReportForm::PageUp()
 	start_ -= 15;
 	cur_ = start_;
 	BankSession bs;
+	bs.Connect();
 	bs.SetCmd(cmd_);
 	bs.SetAttribute("date", date_);
 	bs.SetAttribute("begin_date", beginDate_);
@@ -204,6 +194,7 @@ void ReportForm::PageDown()
 	start_ += 15;
 	cur_ = start_;
 	BankSession bs;
+	bs.Connect();
 	bs.SetCmd(cmd_);
 	bs.SetAttribute("date", date_);
 	bs.SetAttribute("begin_date", beginDate_);
@@ -237,6 +228,7 @@ void ReportForm::Up()
 		start_ -= 15;
 		//cur_ = start_;
 		BankSession bs;
+		bs.Connect();
 		bs.SetCmd(cmd_);
 		bs.SetAttribute("date", date_);
 		bs.SetAttribute("begin_date", beginDate_);
@@ -276,6 +268,7 @@ void ReportForm::Down()
 		start_ += 15;
 		cur_ = start_;
 		BankSession bs;
+		bs.Connect();
 		bs.SetCmd(cmd_);
 		bs.SetAttribute("date", date_);
 		bs.SetAttribute("begin_date", beginDate_);
@@ -311,6 +304,7 @@ void ReportForm::Home()
 	curpage_ = 0;
 
 	BankSession bs;
+	bs.Connect();
 	bs.SetCmd(cmd_);
 	bs.SetAttribute("date", date_);
 	bs.SetAttribute("begin_date", beginDate_);
@@ -340,6 +334,7 @@ void ReportForm::End()
 	cur_ = start_;
 	
 	BankSession bs;
+	bs.Connect();
 	bs.SetCmd(cmd_);
 	bs.SetAttribute("date", date_);
 	bs.SetAttribute("begin_date", beginDate_);

@@ -32,7 +32,7 @@ void MysqlDB::Open(const char* host,
 
 	my_bool reconnect = true;
 	mysql_options(mysql_, MYSQL_OPT_RECONNECT, &reconnect);
-	mysql_options(mysql_, MYSQL_SET_CHARSET_NAME, "gbk");
+	mysql_options(mysql_, MYSQL_SET_CHARSET_NAME, "utf8");
 
 	if (!mysql_real_connect(mysql_, host, user,
 		passwd, db, 0, NULL, 0))

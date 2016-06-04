@@ -46,8 +46,6 @@ public:
 		rft_ = rft;
 	}
 private:
-	void DrawBorder();
-
 	void Reset();
 
 	ReceiptFormType rft_;

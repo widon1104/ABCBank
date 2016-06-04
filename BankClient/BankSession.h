@@ -57,7 +57,7 @@ struct ResponsePack
 	char buf[1];
 };
 
-class BankSession  
+class BankSession
 {
 public:
 	BankSession();

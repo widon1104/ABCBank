@@ -58,16 +58,6 @@ void QueryAccountHistoryBillForm::Draw()
 	JForm::Draw();
 }
 
-void QueryAccountHistoryBillForm::DrawBorder()
-{
-	SetTextColor(FCOLOR_YELLO);
-	SetBkColor(BCOLOR_RED);
-	DrawHLine(0, 0, Width()-1, '-');
-	DrawHLine(Height()-1, 0, Width()-1, '-');
-	DrawVLine(0, 1, Height()-2, ' ');
-	DrawVLine(Width()-1, 1, Height()-2, ' ');
-}
-
 void QueryAccountHistoryBillForm::OnKeyEvent(JEvent* e)
 {
 	int key = e->GetEventCode();
@@ -145,6 +135,7 @@ void QueryAccountHistoryBillForm::Query()
 	try
 	{
 		BankSession bs;
+		bs.Connect();
 		bs.SetCmd(CMD_ACCOUNT_HISTORY_BILL);
 		bs.SetAttribute("account_id", editAccountId_->GetText());
 		bs.SetAttribute("begin_date", editBeginDate_->GetText());

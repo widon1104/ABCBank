@@ -105,6 +105,6 @@ void JWindowBase::DrawVLine(SHORT row, SHORT col, SHORT n, char ch)
 // 清除窗口
 void JWindowBase::ClearWindow()
 {
-	//clear();
-	werase(win);
+	wclear(win);
+	wrefresh(win);
 }

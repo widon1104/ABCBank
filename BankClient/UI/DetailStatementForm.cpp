@@ -45,16 +45,6 @@ void DetailStatementForm::Draw()
 	JForm::Draw();
 }
 
-void DetailStatementForm::DrawBorder()
-{
-	SetTextColor(FCOLOR_YELLO);
-	SetBkColor(BCOLOR_RED);
-	DrawHLine(0, 0, Width()-1, '-');
-	DrawHLine(Height()-1, 0, Width()-1, '-');
-	DrawVLine(0, 1, Height()-2, ' ');
-	DrawVLine(Width()-1, 1, Height()-2, ' ');
-}
-
 void DetailStatementForm::OnKeyEvent(JEvent* e)
 {
 	int key = e->GetEventCode();

@@ -74,16 +74,6 @@ void OpenAccountForm::Draw()
 	JForm::Draw();
 }
 
-void OpenAccountForm::DrawBorder()
-{
-	SetTextColor(FCOLOR_YELLO);
-	SetBkColor(BCOLOR_RED);
-	DrawHLine(0, 0, Width()-1, '-');
-	DrawHLine(Height()-1, 0, Width()-1, '-');
-	DrawVLine(0, 1, Height()-2, ' ');
-	DrawVLine(Width()-1, 1, Height()-2, ' ');
-}
-
 void OpenAccountForm::OnKeyEvent(JEvent* e)
 {
 	int key = e->GetEventCode();
@@ -105,7 +95,7 @@ void OpenAccountForm::OnKeyEvent(JEvent* e)
 			JForm* form;
 			form = Singleton<FormManager>::Instance().Get("MainMenuForm");
 			dynamic_cast<MainMenuForm*>(form)->GetItems()[0]->SetCurrent();
-			form->ClearWindow();
+			ClearWindow();
 			form->Show();
 			e->Done();
 		}
@@ -113,6 +103,7 @@ void OpenAccountForm::OnKeyEvent(JEvent* e)
 		{
 			Reset();
 			editName_->SetCurrent();
+			ClearWindow();
 			Show();
 			e->Done();
 		}
@@ -215,6 +206,7 @@ void OpenAccountForm::Submit()
 	try
 	{
 		BankSession bs;
+		bs.Connect();
 		bs.SetCmd(CMD_OPEN_ACCOUNT);
 		bs.SetAttribute("name", editName_->GetText());
 		bs.SetAttribute("pass", editPass_->GetText());
@@ -233,6 +225,7 @@ void OpenAccountForm::Submit()
 			form->SetItemText("户    名", bs.GetAttribute("name"));
 			form->SetItemText("帐    号", bs.GetResponse("account_id"));
 			form->SetItemText("金    额", bs.GetAttribute("money"));
+			form->ClearWindow();
 			form->Show();
 		}
 		else

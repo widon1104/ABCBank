@@ -36,7 +36,6 @@ public:
 
 
 private:
-	void DrawBorder();
 
 	std::vector<JLinkText*> items_;
 

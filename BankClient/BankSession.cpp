@@ -25,8 +25,15 @@ int BankSession::Connect()
         Singleton<Client>::Instance().GetServerIp().c_str(),
         Singleton<Client>::Instance().GetPort())
         ) {
-        //throw Exception("连接失败");
-        return 0;
+		socket_.reset(new Socket());
+		socket_->Create();
+		if (!socket_->Connect(Singleton<Client>::Instance().GetServerIp().c_str(),
+						 Singleton<Client>::Instance().GetPort())) {
+			char errormsg[128] = {0};
+			snprintf(errormsg, sizeof(errormsg), "connect error: %s", strerror(errno));
+			throw Exception(errormsg);
+			return 0;
+		}
     }
     return 1;
 }

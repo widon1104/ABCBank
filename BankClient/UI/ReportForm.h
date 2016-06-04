@@ -60,7 +60,6 @@ public:
 	}
 
 private:
-	void DrawBorder();
 	void Reset();
 
 	void PageUp();

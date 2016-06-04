@@ -25,8 +25,6 @@ public:
 	virtual void OnKeyEvent(JEvent* e);
 
 private:
-	void DrawBorder();
-
 	void Reset();
 	void Submit();
 

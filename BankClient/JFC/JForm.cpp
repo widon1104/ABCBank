@@ -31,6 +31,18 @@ void JForm::Draw()
 	}
 }
 
+void JForm::DrawBorder()
+{
+	SetTextColor(FCOLOR_YELLO);
+	SetBkColor(BCOLOR_RED);
+
+	DrawHLine(0, 0, Width(), '-');
+	DrawHLine(Height()-1, 0, Width(), '-');
+
+	DrawVLine(0, 0, Height(), ' ');
+	DrawVLine(0, Width()-1, Height(), ' ');
+}
+
 void JForm::OnKeyEvent(JEvent* e)
 {
 	if (e->IsDone())

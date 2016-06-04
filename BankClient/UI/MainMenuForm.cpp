@@ -52,18 +52,6 @@ void MainMenuForm::Draw()
 	JForm::Draw();
 }
 
-void MainMenuForm::DrawBorder()
-{
-	SetTextColor(FCOLOR_YELLO);
-	SetBkColor(BCOLOR_RED);
-	DrawHLine(0, 0, Width()-1, '-');
-	DrawHLine(Height()-1, 0, Width()-1, '-');
-	DrawVLine(0, 1, Height()-2, ' ');
-	DrawVLine(Width()-1, 1, Height()-2, ' ');
-}
-
-
-
 void MainMenuForm::OnKeyEvent(JEvent* e)
 {
 	int key = e->GetEventCode();
@@ -204,6 +192,7 @@ void MainMenuForm::OpenAccount()
 	//JMessageBox::Show("-MESSAGE-", msg, v);
 
 	JForm* form = Singleton<FormManager>::Instance().Get("OpenAccountForm");
+	ClearWindow();
 	form->Show();
 }
 
@@ -215,6 +204,7 @@ void MainMenuForm::Deposit()
 	//JMessageBox::Show("-MESSAGE-", msg, v);
 
 	JForm* form = Singleton<FormManager>::Instance().Get("DepositForm");
+	ClearWindow();
 	form->Show();
 }
 
@@ -226,6 +216,7 @@ void MainMenuForm::Withdraw()
 	//JMessageBox::Show("-MESSAGE-", msg, v);
 
 	JForm* form = Singleton<FormManager>::Instance().Get("WithdrawalForm");
+	ClearWindow();
 	form->Show();
 }
 
@@ -237,6 +228,7 @@ void MainMenuForm::Transfer()
 	//JMessageBox::Show("-MESSAGE-", msg, v);
 
 	JForm* form = Singleton<FormManager>::Instance().Get("TransferForm");
+	ClearWindow();
 	form->Show();
 }
 
@@ -248,6 +240,7 @@ void MainMenuForm::BalanceInquiry()
 	//JMessageBox::Show("-MESSAGE-", msg, v);
 
 	JForm* form = Singleton<FormManager>::Instance().Get("BalanceInquiryForm");
+	ClearWindow();
 	form->Show();
 }
 
@@ -259,6 +252,7 @@ void MainMenuForm::ChangePassword()
 	//JMessageBox::Show("-MESSAGE-", msg, v);
 
 	JForm* form = Singleton<FormManager>::Instance().Get("ChangePasswordForm");
+	ClearWindow();
 	form->Show();
 }
 
@@ -270,6 +264,7 @@ void MainMenuForm::DetailStatement()
 	//JMessageBox::Show("-MESSAGE-", msg, v);
 
 	JForm* form = Singleton<FormManager>::Instance().Get("DetailStatementForm");
+	ClearWindow();
 	form->Show();
 }
 
@@ -281,6 +276,7 @@ void MainMenuForm::CloseAccount()
 	//JMessageBox::Show("-MESSAGE-", msg, v);
 
 	JForm* form = Singleton<FormManager>::Instance().Get("CloseAccountForm");
+	ClearWindow();
 	form->Show();
 }
 

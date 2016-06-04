@@ -17,6 +17,7 @@ public:
 
 	virtual void OnKeyEvent(JEvent* e);
 	virtual void Draw();
+	void DrawBorder();
 };
 
 }

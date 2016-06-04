@@ -121,7 +121,7 @@ bool Socket::Connect(const char* ip, unsigned short port)
 
 	if (SOCKET_ERROR == connect(socket_, (sockaddr*)&addr, sizeof(addr)) )
 	{
-        printf("connect error: %s\n", strerror(errno));
+		//printf("connect error: %s %d\n", strerror(errno), errno);
 		return false;
 	}	
 	return true;

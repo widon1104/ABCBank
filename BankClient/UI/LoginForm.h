@@ -23,7 +23,6 @@ public:
 	virtual void Draw();
 	virtual void OnKeyEvent(JEvent* e);
 
-	void DrawBorder();
 private:
 
 	void Login();

@@ -30,11 +30,8 @@ public:
 	JButton* btnReturn_;
 
 private:
-	void DrawBorder();
 
 	std::string title_;
-
-	
 };
 
 }

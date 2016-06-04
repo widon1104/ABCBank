@@ -53,7 +53,7 @@ void ReceiptForm::Draw()
 	DrawBorder();
     SetTextColor(COLOR_BLUE);
     SetBkColor(COLOR_CYAN);
-	JRECT rect = { 1, 1, Width()-2, Height()-2 };
+	JRECT rect = { 1, 1, Width()-1, Height()-1 };
 	FillRect(rect);
 
 	DrawText(5, 2, title_);
@@ -102,16 +102,6 @@ void ReceiptForm::OnKeyEvent(JEvent* e)
 	}
 
 	JForm::OnKeyEvent(e);
-}
-
-void ReceiptForm::DrawBorder()
-{
-    SetTextColor(COLOR_YELLOW);
-    SetBkColor(COLOR_MAGENTA);
-	DrawHLine(0, 0, Width()-1, '-');
-	DrawHLine(Height()-1, 0, Width()-1, '-');
-	DrawVLine(0, 1, Height()-2, ' ');
-	DrawVLine(Width()-1, 1, Height()-2, ' ');
 }
 
 void ReceiptForm::Reset()

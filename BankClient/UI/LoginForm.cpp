@@ -66,18 +66,6 @@ void LoginForm::Draw()
 	JForm::Draw();
 }
 
-void LoginForm::DrawBorder()
-{
-	SetTextColor(FCOLOR_YELLO);
-	SetBkColor(BCOLOR_RED);
-
-	DrawHLine(0, 0, Width(), '-');
-	DrawHLine(Height()-1, 0, Width(), '-');
-
-	DrawVLine(0, 0, Height(), ' ');
-	DrawVLine(0, Width()-1, Height(), ' ');
-}
-
 void LoginForm::OnKeyEvent(JEvent* e)
 {
 	JWindow* win = e->GetSender();
@@ -109,14 +97,6 @@ void LoginForm::Login()
 
 		int result = JMessageBox::Show("-ERROR-", msg,v);
 
-		/*
-		JWindow* win = jApp->GetCurrent();
-		editUser_->Show();
-		win->Draw();
-		win->Refresh();
-		JForm* form = Singleton<FormManager>::Instance().Get("LoginForm");
-	    form->Draw();
-		*/
 		ClearWindow();
 		Show();
 
@@ -166,6 +146,7 @@ void LoginForm::Login()
 	try
 	{
 		BankSession* bs = Singleton<Client>::Instance().GetBankSession();
+		bs->Connect();
 		bs->Clear();
 		bs->SetCmd(CMD_LOGIN);
 		bs->SetAttribute("name", editUser_->GetText());
@@ -216,13 +197,13 @@ void LoginForm::Exit()
 	v.push_back(" 3 ");
 	v.push_back(" 4 ");
 	v.push_back(" 5 ");
-	std::string msg = "Do you want to exit?????????????????????????????????????????????????????????????????????????????";
+	std::string msg = "Do you want to exit?";
 
-	int result = JMessageBox::Show("-MESSAGE-", msg,v);
+	int result = JMessageBox::Show("-MESSAGE-", msg, v);
 	if (result == 0)
 	{
-		//system("cls");
-		//exit(0);
+		system("clear");
+		exit(0);
 	}
 
 	ClearWindow();

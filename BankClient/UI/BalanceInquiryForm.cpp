@@ -61,16 +61,6 @@ void BalanceInquiryForm::Draw()
 	JForm::Draw();
 }
 
-void BalanceInquiryForm::DrawBorder()
-{
-    SetTextColor(COLOR_YELLOW);
-    SetBkColor(COLOR_RED);
-	DrawHLine(0, 0, Width()-1, '-');
-	DrawHLine(Height()-1, 0, Width()-1, '-');
-	DrawVLine(0, 1, Height()-2, ' ');
-	DrawVLine(Width()-1, 1, Height()-2, ' ');
-}
-
 void BalanceInquiryForm::OnKeyEvent(JEvent* e)
 {
 	int key = e->GetEventCode();
@@ -101,6 +91,7 @@ void BalanceInquiryForm::OnKeyEvent(JEvent* e)
 		{
 			Reset();
 			editAccountId_->SetCurrent();
+			ClearWindow();
 			Show();
 			e->Done();
 		}
@@ -151,6 +142,7 @@ void BalanceInquiryForm::Submit()
 	try
 	{
 		BankSession* bs = Singleton<Client>::Instance().GetBankSession();
+		bs->Connect();
 		bs->Clear();
 		bs->SetCmd(CMD_BALANCE_INQUIRY);
 		bs->SetAttribute("account_id", editAccountId_->GetText());
@@ -170,7 +162,7 @@ void BalanceInquiryForm::Submit()
 			form->SetItemText("户    名", bs->GetResponse("name"));
 			form->SetItemText("帐    号", bs->GetAttribute("account_id"));
 			form->SetItemText("余    额", bs->GetResponse("balance"));
-
+			form->ClearWindow();
 			form->Show();
 		}
 		else

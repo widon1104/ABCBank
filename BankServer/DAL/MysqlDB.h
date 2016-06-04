@@ -12,6 +12,7 @@
 
 #include <vector>
 #include <string>
+#include <cstring>
 using namespace std;
 
 namespace DAL
@@ -48,8 +49,10 @@ public:
 		unsigned int index = -1;
 		for(unsigned int i = 0; i < fields_.size(); ++i)
 		{
-			if (fields_[i].name == name)
+			if (strcasecmp(fields_[i].name.c_str(), name.c_str()) == 0) {
 				index = fields_[i].index;
+				break;
+			}
 		}
 		return index;
 	}

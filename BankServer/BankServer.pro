@@ -2,6 +2,7 @@ TEMPLATE = app
 CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG -= qt
+QMAKE_CXXFLAGS += -g -O0
 LIBS += -lpthread
 LIBS += -L/usr/lib/x86_64-linux-gnu -lmysqlclient
 
