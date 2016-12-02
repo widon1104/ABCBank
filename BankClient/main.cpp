@@ -2,9 +2,9 @@
 #include "bankclient.h"
 #include "../Public/Singleton.h"
 #include "Client.h"
-#include "../JFC/JForm.h"
+#include "JFC/JForm.h"
 #include "UI/FormManager.h"
-#include "../JFC/JButton.h"
+#include "JFC/JButton.h"
 #include "UI/LoginForm.h"
 
 using namespace std;
